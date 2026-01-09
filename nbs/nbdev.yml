@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "structify"
+  site-url: "https://gautam-e.github.io/structify"
+  description: "Make structured output easy for different LLM providers with the help of litellm"
+  repo-branch: main
+  repo-url: "https://github.com/gautam-e/structify"
