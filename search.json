@@ -1,0 +1,52 @@
+[
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "source\n\nstructured_output\n\ndef structured_output(\n    model:str, # Model name, see examples here or LiteLLM docs for complete list\n    system_prompt:str, # Instructions for LLM to process the input string\n    response_format:BaseModel, # User-defined Pydantic model to define output\n    user_prompt:str, # Input string that will be processed\n)-&gt;BaseModel:\n\nGet structured output from model by combining system and user prompts and making the right API call. See, here for full list of APIs available.\nYou can control the model that is used for the call by simply adjusting the string in the model variable.\n\nmodel=\"azure/gpt-4o-2024-08-06\" # e.g. openai/gpt-4o-2024-08-06 would use the standard OpenAI\nsystem_prompt = \"Extract the event information.\"\n\nclass CalendarEvent(BaseModel):\n    name: str\n    date: str\n    participants: list[str]\n\n\nuser_prompt = \"Alice and Bob are going to Carmen's birthday party on 22nd March 2025\"\n\n\nr = structured_output(model=model,\n                      system_prompt=system_prompt,\n                      response_format=CalendarEvent, #Note this is the class name (without the `()`)\n                      user_prompt=user_prompt,\n                 )\n\nr.model_dump()\n\n{'name': \"Carmen's Birthday Party\",\n 'date': '2025-03-22',\n 'participants': ['Alice', 'Bob']}",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "litestruct",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation.",
+    "crumbs": [
+      "litestruct"
+    ]
+  },
+  {
+    "objectID": "index.html#developer-guide",
+    "href": "index.html#developer-guide",
+    "title": "litestruct",
+    "section": "Developer Guide",
+    "text": "Developer Guide\nIf you are new to using nbdev here are some useful pointers to get you started.\n\nInstall litestruct in Development mode\n# make sure litestruct package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to litestruct\n$ nbdev_prepare",
+    "crumbs": [
+      "litestruct"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "litestruct",
+    "section": "Usage",
+    "text": "Usage\n\nInstallation\nInstall latest from the GitHub repository:\n$ pip install git+https://github.com/gautam-e/litestruct.git\nor from pypi\n$ pip install litestruct\n\n\nDocumentation\nDocumentation can be found hosted on this GitHub repository’s pages. Additionally you can find package manager specific guidelines on conda and pypi respectively.",
+    "crumbs": [
+      "litestruct"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "litestruct",
+    "section": "How to use",
+    "text": "How to use\n\nfrom litestruct import *\nfrom pydantic import BaseModel\n\n\nmodel=\"azure/gpt-4o-2024-08-06\" # e.g. openai/gpt-4o-2024-08-06 would use the standard OpenAI\nsystem_prompt = \"Extract the event information.\"\n\nclass CalendarEvent(BaseModel):\n    name: str\n    date: str\n    participants: list[str]\n\n\nuser_prompt = \"Alice and Bob are going to Carmen's birthday party on 22nd March 2025\"\n\n\nr = structured_output(model=model,\n                      system_prompt=system_prompt,\n                      response_format=CalendarEvent, #Note this is the class name (without the `()`)\n                      user_prompt=user_prompt,\n                 )\n\nr.model_dump()\n\n{'name': \"Carmen's Birthday Party\",\n 'date': '2025-03-22',\n 'participants': ['Alice', 'Bob']}",
+    "crumbs": [
+      "litestruct"
+    ]
+  }
+]
